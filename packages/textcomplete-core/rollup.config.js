@@ -2,47 +2,29 @@ import resolve from "rollup-plugin-node-resolve"
 import commonjs from "rollup-plugin-commonjs"
 import typescript from "rollup-plugin-typescript2"
 
-const namedExports = {
-    "node_modules/eventemitter3/index.js": ["EventEmitter"]
-}
-
-export default [
+const outputs = [
     {
-        input: "./src/index.ts",
-        output: {
-            file: "./dist/index.js",
-            format: "cjs",
-            sourcemap: true
-        },
-        plugins: [
-            resolve(),
-            commonjs({ namedExports }),
-            typescript({
-                tsconfigOverride: {
-                    compilerOptions: {
-                        target: "es5"
-                    }
-                }
-            })
-        ]
+        file: "./dist/index.js",
+        format: "cjs",
+        sourcemap: true
     },
     {
-        input: "./src/index.ts",
-        output: {
-            file: "./dist/index.mjs",
-            format: "es",
-            sourcemap: true
-        },
-        plugins: [
-            resolve(),
-            commonjs({ namedExports }),
-            typescript({
-                tsconfigOverride: {
-                    compilerOptions: {
-                        target: "es2015"
-                    }
-                }
-            }),
-        ]
+        file: "./dist/index.mjs",
+        format: "es",
+        sourcemap: true
     }
 ]
+
+export default outputs.map(output => ({
+    input: "./src/index.ts",
+    output,
+    plugins: [
+        resolve(),
+        commonjs({
+            namedExports: {
+                "node_modules/eventemitter3/index.js": ["EventEmitter"]
+            }
+        }),
+        typescript(),
+    ]
+}))
