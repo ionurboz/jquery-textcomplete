@@ -1,0 +1,36 @@
+{
+  "name": "textcomplete-core",
+  "version": "0.0.0",
+  "description": "Core package of textcomplate family",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "(rm -fr dist || true) && rollup -c",
+    "format": "prettier --parser typescript --write 'src/**/*.ts'",
+    "lint:prettier": "prettier --parser typescript -l 'src/**/*.ts'",
+    "lint:tslint": "tslint --project .",
+    "lint": "run-p lint:*"
+  },
+  "keywords": [
+    "textcomplete"
+  ],
+  "author": "Yuku Takahashi <taka84u9@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-typescript2": "^0.13.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "typescript": "^2.8.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false
+  }
+}
