@@ -33,7 +33,7 @@ Then `jQuery.fn.textcomplete` is defined. The method MUST be called for textarea
 
 ```js
 $('textarea').textcomplete(strategies, option);
-// $('[contenteditable="true"]').textcomplete(strategies, option);
+// $('[contenteditable="true"]').textcomplete(strategies, option); 
 ```
 
 The `strategies` is an Array. Each element is called as strategy object.
